@@ -10,7 +10,7 @@ router.get("/", userController.getUsers);
 router.get("/:id", userController.userDetails);
 
 
-router.post("/signUp", userController.signUp);
+router.post("/signup", userController.signUp);
 
 
 router.post("/login", userController.login);

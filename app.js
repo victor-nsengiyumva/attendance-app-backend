@@ -28,8 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // routes 
-const indexRouter = require("./routes/tutorial.routes")
+const indexRouter = require("./routes/index");
+const tutorialRouter = require("./routes/tutorials");
 app.get("/", indexRouter)
+app.use("/tutorials", tutorialRouter);
 
 
 

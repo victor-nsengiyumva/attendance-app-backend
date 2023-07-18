@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 
-router.post("/", tutorialController.create)
+router.get("/", function (req, res) {
+    res.redirect("/tutorials");});
 
-module.exports = router
+module.exports = router;

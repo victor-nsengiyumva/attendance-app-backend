@@ -9,6 +9,10 @@
   "author": "nsenji",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "mysql2": "^3.5.2",
+    "sequelize": "^6.32.1"
   }
 }

@@ -31,7 +31,7 @@ exports.create = (req, res, next) => {
 };
 
 // find all by title
-exports.findAll = asyncHandler(async (req, res, next) => {
+exports.findAll = (req, res, next) => {
 
     const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;  // this query will search the database for a title that has  partial string [`%${title}%`] in it
@@ -48,10 +48,10 @@ exports.findAll = asyncHandler(async (req, res, next) => {
       });
     });
 
-});
+};
 
 // find one by id
-exports.findOne = asyncHandler(async (req, res, next) => {
+exports.findOne =  (req, res, next) => {
 
     const id = req.params.id;
 
@@ -71,11 +71,11 @@ exports.findOne = asyncHandler(async (req, res, next) => {
       });
     });
 
-});
+};
 
 
 // update at a particular id
-exports.update = asyncHandler(async (req, res, next) => {
+exports.update = (req, res, next) => {
 
     const id = req.params.id;
 
@@ -99,10 +99,10 @@ exports.update = asyncHandler(async (req, res, next) => {
       });
     });
 
-});
+};
 
 // delete a particular id
-exports.delete = asyncHandler(async (req, res, next) => {
+exports.delete = (req, res, next) => {
 
     const id = req.params.id;
 
@@ -125,11 +125,11 @@ exports.delete = asyncHandler(async (req, res, next) => {
         message: "Could not delete Tutorial with id=" + id
       });
     });
-});
+};
 
 
 // delete all entries but without deleting the table
-exports.deleteAll = asyncHandler(async (req, res, next) => {
+exports.deleteAll =  (req, res, next) => {
 
 
     Tutorial.destroy({
@@ -145,10 +145,10 @@ exports.deleteAll = asyncHandler(async (req, res, next) => {
               err.message || "Some error occurred while removing all tutorials."
           });
         });
-});
+};
 
 // find all where a certain field is true
-exports.findAllPublished = asyncHandler(async (req, res, next) => {
+exports.findAllPublished = (req, res, next) => {
     Tutorial.findAll({ where: { published: true } })
     .then(data => {
       res.send(data);
@@ -159,4 +159,4 @@ exports.findAllPublished = asyncHandler(async (req, res, next) => {
           err.message || "Some error occurred while retrieving tutorials."
       });
     });
-})
+}

@@ -31,8 +31,9 @@ exports.create = (req, res, next) => {
 };
 
 // find all by title
-exports.findAll = (req, res, next) => {
-
+exports.findAll = (req, res, next) => {    // here the url would typically be like that which retrieves all tutorials [router.get("/", tutorials.findAll)] but then you add futher queries for only 
+                                            // those with a prticular title [router.get("/?title=node", tutorials.findAll)]
+                                            // the reference is this => https://www.bezkoder.com/node-js-express-sequelize-mysql/
     const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;  // this query will search the database for a title that has  partial string [`%${title}%`] in it
                                                                           // ie it will return all those that have the substring in them, to return the exact title, use Op.eq

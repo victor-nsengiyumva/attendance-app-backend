@@ -36,8 +36,7 @@ exports.signUp = async (req, res, next) => {
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                message: err.message || "Some error occurred while creating the Tutorial."
             });
         });
 
@@ -49,23 +48,33 @@ exports.login = async (req, res, next) => {
     var PF = req.body.PF
     var email = req.body.email
 
+ 
+
     if (PF) {
 
-        data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
+        try {
+            data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
+            if (data) {
+                res.send(data)
+            } else {
+                res.send("user with that PF doesnt exist")
+            }
 
-        if (data) {
-            res.send(data)
-        } else {
-            res.send("user with that PF doesnt exist")
+        } catch (error) {
+            res.send(error || "some error occurred during login")
         }
 
     } else {
 
-        data = await User.findOne({ where: { email: { [Op.eq]: email } } })
-        if (data) {
-            res.send(data)
-        } else {
-            res.send("user with that email doesnt exist ")
+        try {
+            data = await User.findOne({ where: { email: { [Op.eq]: email } } })
+            if (data) {
+                res.send(data)
+            } else {
+                res.send("user with that email doesnt exist ")
+            }
+        } catch (error) {
+            res.send(error || "some error occurred during login")
         }
     }
 

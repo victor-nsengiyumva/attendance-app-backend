@@ -48,13 +48,13 @@ exports.login = async (req, res, next) => {
     var PF = req.body.PF
     var email = req.body.email
 
- 
-
     if (PF) {
 
         try {
             data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
             if (data) {
+                req.session.data = data;
+                req.session.data.loggedIn = true;
                 res.send(data)
             } else {
                 res.send("user with that PF doesnt exist")
@@ -69,6 +69,8 @@ exports.login = async (req, res, next) => {
         try {
             data = await User.findOne({ where: { email: { [Op.eq]: email } } })
             if (data) {
+                req.session.data = data;
+                req.session.data.loggedIn = true;
                 res.send(data)
             } else {
                 res.send("user with that email doesnt exist ")
@@ -78,4 +80,16 @@ exports.login = async (req, res, next) => {
         }
     }
 
+};
+
+exports.logout = async (req, res, next) => {
+
+    req.session.data.loggedIn = false;
+    res.send("successful logout")
+};
+
+exports.checksession = async (req, res, next) => {
+
+    state = req.session.data.loggedIn ? true:false
+    res.send(state);
 };

@@ -17,12 +17,17 @@ module.exports = (sequelize, Sequelize) => {
         email: {
             type:Sequelize.STRING
         },
+        loggedIn: {
+            type:Sequelize.BOOLEAN,
+            defaultValue: false
+        },
         NIN :{
             type:Sequelize.STRING(20)
         },
         TIN :{
             type:Sequelize.STRING(20)
         },
+    
         PASSWORD :{
             type:Sequelize.STRING
         }

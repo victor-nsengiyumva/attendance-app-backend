@@ -3,8 +3,6 @@ db = require("../models/index")
 const User = db.users
 const Op = db.Sequelize.Op
 
-
-
 exports.getUsers = (req, res, next) => {
 
     res.send("these will be the users");

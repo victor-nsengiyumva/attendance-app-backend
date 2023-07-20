@@ -55,7 +55,7 @@ exports.login = async (req, res, next) => {
             data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
             if (data) {
                 // Generate a token
-                const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '1h' });
+                const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '3h' });
 
                 // Send the token in the response
                 res.header('Authorization', `Bearer ${token}`).send({ data, token });
@@ -75,7 +75,7 @@ exports.login = async (req, res, next) => {
             if (data) {
 
                 // Generate a token
-                const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '1h' });
+                const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '3h' });
 
                 // Send the token in the response
                 res.header('Authorization', `Bearer ${token}`).send({ data, token });
@@ -99,5 +99,5 @@ exports.logout = async (req, res, next) => {
 exports.checksession = async (req, res, next) => {
 
 
-    res.send("no session availble");
+    res.send(`yeah the verification has worked ${req.userId}`);
 };

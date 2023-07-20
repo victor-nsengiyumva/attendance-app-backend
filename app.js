@@ -1,18 +1,11 @@
 const express = require('express');
 const cors = require("cors");
-const session = require('express-session');
-const sessionKey = require("./config/session.config")
+
 const app = express();
 
 app.use(cors());
 
-app.use(
-  session({
-    secret: sessionKey.secretKey,
-    resave: false,
-    saveUninitialized:false
-  })
-);
+
 
 // syncing the database
 const db = require("./models/index");

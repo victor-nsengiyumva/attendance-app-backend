@@ -1,4 +1,7 @@
 db = require("../models/index")
+const jwt = require("jsonwebtoken")
+
+const jsontoken  = require("../config/session.config");
 
 const User = db.users
 const Op = db.Sequelize.Op
@@ -51,9 +54,12 @@ exports.login = async (req, res, next) => {
         try {
             data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
             if (data) {
-                req.session.data = data;
-                req.session.data.loggedIn = true;
-                res.send(data)
+                // Generate a token
+                const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '1h' });
+
+                // Send the token in the response
+                res.header('Authorization', `Bearer ${token}`).send({ data, token });
+
             } else {
                 res.send("user with that PF doesnt exist")
             }
@@ -67,9 +73,13 @@ exports.login = async (req, res, next) => {
         try {
             data = await User.findOne({ where: { email: { [Op.eq]: email } } })
             if (data) {
-                req.session.data = data;
-                req.session.data.loggedIn = true;
-                res.send(data)
+
+                // Generate a token
+                const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '1h' });
+
+                // Send the token in the response
+                res.header('Authorization', `Bearer ${token}`).send({ data, token });
+                
             } else {
                 res.send("user with that email doesnt exist ")
             }
@@ -82,12 +92,12 @@ exports.login = async (req, res, next) => {
 
 exports.logout = async (req, res, next) => {
 
-    req.session.data.loggedIn = false;
+
     res.send("successful logout")
 };
 
 exports.checksession = async (req, res, next) => {
 
-    state = req.session.data.loggedIn ? true:false
-    res.send(state);
+
+    res.send("no session availble");
 };

@@ -47,7 +47,9 @@ exports.signUp = async (req, res, next) => {
 exports.login = async (req, res, next) => {
 
     var PF = req.body.PF
+    // console.log(PF)
     var email = req.body.email
+    // console.log(email)
 
     if (PF) {
 
@@ -61,14 +63,14 @@ exports.login = async (req, res, next) => {
                 res.header('Authorization', `Bearer ${token}`).send({ data, token });
 
             } else {
-                res.send("user with that PF doesnt exist")
+                res.send("User with that PF doesnt exist")
             }
 
         } catch (error) {
-            res.send(error || "some error occurred during login")
+            res.send("Some error occurred during login")
         }
 
-    } else {
+    } else if (email) {
 
         try {
             data = await User.findOne({ where: { email: { [Op.eq]: email } } })
@@ -81,11 +83,13 @@ exports.login = async (req, res, next) => {
                 res.header('Authorization', `Bearer ${token}`).send({ data, token });
                 
             } else {
-                res.send("user with that email doesnt exist ")
+                res.send("User with that email doesnt exist ")
             }
         } catch (error) {
-            res.send(error || "some error occurred during login")
+            res.send("Some error occurred during login")
         }
+    }else{
+        res.send("Provide PF or email");
     }
 
 };

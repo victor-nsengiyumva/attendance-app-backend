@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require("cors");
+
 const app = express();
 
-
-
 app.use(cors());
+
 
 
 // syncing the database
@@ -28,8 +28,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // routes 
-const indexRouter = require("./routes/tutorial.routes")
-app.get("/", indexRouter)
+const indexRouter = require("./routes/index");
+const userRouter = require("./routes/users");
+const tutorialRouter = require("./routes/tutorials");
+app.use("/", indexRouter)
+app.use("/users", userRouter);
+app.use("/tutorials", tutorialRouter);
 
 
 

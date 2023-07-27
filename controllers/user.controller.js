@@ -105,3 +105,10 @@ exports.checksession = async (req, res, next) => {
 
     res.send(`yeah the verification has worked ${req.userId}`);
 };
+
+
+exports.accountDelete = async (req, res, next) => {
+
+
+    res.send(`successfully deleted account for ${req.userId}`);
+};

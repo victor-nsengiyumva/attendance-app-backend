@@ -8,7 +8,7 @@ function authMiddleware(req, res, next) {
   const token = req.headers.authorization;  // the request should have the key/token in the header of the request 
 
   if (!token) {
-    return res.json({ message: 'No token provided.' });
+    return res.json({ message: 'No token provided.'});
   }
 
   // Verify and decode the token

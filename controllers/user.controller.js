@@ -8,7 +8,7 @@ const Op = db.Sequelize.Op
 
 exports.getUsers = (req, res, next) => {
 
-    res.send("these will be the users");
+    res.send("these will be the users" );
 
 };
 
@@ -37,7 +37,7 @@ exports.signUp = async (req, res, next) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Tutorial."
+                message: err.message || "Some error occurred while creating the User."
             });
         });
 

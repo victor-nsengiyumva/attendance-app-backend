@@ -38,10 +38,6 @@ app.use("/tutorials", tutorialRouter);
 
 
 
-
-
-
-
 // setting up server
 app.listen(process.env.PORT || 3000, () => console.log('server is started'));
 

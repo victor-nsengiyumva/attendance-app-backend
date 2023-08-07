@@ -20,26 +20,37 @@ exports.userDetails = (req, res, next) => {
 
 exports.signUp = async (req, res, next) => {
 
-    const user = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        PF: req.body.PF,
-        mobile_number: req.body.mobile_number,
-        email: req.body.email,
-        NIN: req.body.NIN,
-        TIN: req.body.TIN,
-        PASSWORD: req.body.PASSWORD
-    }
+    var PF = req.body.PF
 
-    await User.create(user)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating the User."
-            });
-        });
+    data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
+            if (data) {
+                res.send("User with that PF already exists")
+
+            } else {
+                const user = {
+                    PF: req.body.PF,
+                    email: req.body.email,
+                    mobile_number: req.body.mobile_number,
+                    location: req.body.location,
+                    deviceID : req.body.deviceID
+                }
+            
+            
+                await User.create(user)
+                    .then(data => {
+                        res.send(data);
+                    })
+                    .catch(err => {
+                        res.send(
+                            "Some error occurred while creating the User."
+                        );
+                    });
+
+            }
+
+
+
+   
 
 
 };

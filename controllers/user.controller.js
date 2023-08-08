@@ -35,8 +35,11 @@ exports.signUp = async (req, res, next) => {
                     deviceID : req.body.deviceID
                 }
             
+                // the rough sql equivalent for this command is 
+                // INSERT INTO users (PF, email, mobile_number, location, deviceID)
+                // VALUES ('PF_value', 'email_value', 'mobile_number_value', 'location_value', 'deviceID_value');
             
-                await User.create(user)
+                await User.create(user) 
                     .then(data => {
                         res.send(data);
                     })
@@ -65,7 +68,7 @@ exports.login = async (req, res, next) => {
     if (PF) {
 
         try {
-            data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
+            data = await User.findOne({ where: { PF: { [Op.eq]: PF } } }) // the rough sql equivalent for this command is  [ SELECT * FROM users WHERE PF = 'value';]
             if (data) {
                 // Generate a token
                 const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '3h' });
@@ -84,7 +87,7 @@ exports.login = async (req, res, next) => {
     } else if (email) {
 
         try {
-            data = await User.findOne({ where: { email: { [Op.eq]: email } } })
+            data = await User.findOne({ where: { email: { [Op.eq]: email } } })  // the rough sql equivalent for this command is  [ SELECT * FROM users WHERE email = 'value';]
             if (data) {
 
                 // Generate a token

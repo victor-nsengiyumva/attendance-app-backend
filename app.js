@@ -31,9 +31,12 @@ app.use(express.urlencoded({ extended: true }));
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/users");
 const tutorialRouter = require("./routes/tutorials");
+const attendanceRouter = require("./routes/attendance");
+
 app.use("/", indexRouter)
 app.use("/users", userRouter);
 app.use("/tutorials", tutorialRouter);
+app.use("/attendance",attendanceRouter);
 
 
 

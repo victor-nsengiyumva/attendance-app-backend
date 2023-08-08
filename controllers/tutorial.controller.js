@@ -1,4 +1,4 @@
-db = require("../models/index")
+db = require("../models/index" )
 const asyncHandler = require("express-async-handler");
 
 const Tutorial = db.tutorials;

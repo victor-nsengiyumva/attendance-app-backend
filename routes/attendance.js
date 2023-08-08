@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const attendanceLogs = require("../attendance.controller")
+const attendance = require("../controllers/attendance.controller");
 
 
-router.get("/", attendanceLogs.getAttendanceLogs);
+router.get("/", attendance.getAttendanceLogs);
 
-router.post("/register", attendanceLogs.registerAttendance);
+router.post("/checkIn", attendance.checkIn);
 
-router.post("/register/overtime", attendanceLogs.registerOvertime);
+router.post("/checkOut", attendance.checkOut);
 
-router.post("/register/absent", attendanceLogs.registerAbsent);
+router.post("/register/overtime", attendance.registerOvertime);
+
+router.post("/register/absent", attendance.registerAbsent);
+
+module.exports = router;

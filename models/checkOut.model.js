@@ -3,11 +3,11 @@ module.exports = (sequelize,Sequelise) => {
         userID:{
             type:Sequelise.INTEGER
         },
-        checkInTime:{
-            type:Sequelise.TIME
+        checkOutTime:{
+            type:Sequelise.STRING
         },
-        date:{
-            type:Sequelise.DATE
+        dateToday:{
+            type:Sequelise.STRING
         },
     });
     return CheckOut;

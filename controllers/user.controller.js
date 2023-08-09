@@ -21,7 +21,9 @@ exports.userDetails = (req, res, next) => {
 exports.signUp = async (req, res, next) => {
 
     var PF = req.body.PF
-
+    // this returns a Sequelise body with several properties(check print statement)
+    // and will return null if there is no matching record
+    // if we had used User.findAll, a list wiil be returned and if there is no value it will be an empty list returned
     data = await User.findOne({ where: { PF: { [Op.eq]: PF } } })
             if (data) {
                 res.send("User with that PF already exists")

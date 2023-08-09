@@ -3,7 +3,6 @@ const CheckIn = db.checkIn;
 const CheckOut = db.checkOut
 
 
-
 exports.getAttendanceLogs = async (req, res, next) => {
     res.send("these are all the logs for attendance");
 }
@@ -33,7 +32,7 @@ exports.checkIn = async (req, res, next) => {
 }
 
 
-exports.checkOut = async  (req, res, next) => {
+exports.checkOut = async (req, res, next) => {
 
     console.log(req.body.dateToday)
     const checkout = {
@@ -60,4 +59,47 @@ exports.registerOvertime = (req, res, next) => {
 
 exports.registerAbsent = (req, res, next) => {
     res.send("these are all the logs for attendance");
+}
+
+exports.checkClockIn = async (req, res, next) => {
+
+    const userID = req.body.userID;
+    const dateToday = req.body.dateToday;
+
+
+    try {
+
+        data = await CheckIn.findOne({ where: { userID: userID, dateToday: dateToday } })
+
+        if (data) {
+            res.send(true);
+        } else {
+            res.send(false);
+        }
+
+
+    } catch (error) {
+        res.send(error, "some error occured during retieving the checkIn")
+    }
+}
+
+exports.checkClockOut = async (req, res, next) => {
+    const userID = req.body.userID;
+    const dateToday = req.body.dateToday;
+
+
+    try {
+
+        data = await CheckOut.findOne({ where: { userID: userID, dateToday: dateToday } })
+
+        if (data) {
+            res.send(true);
+        } else {
+            res.send(false);
+        }
+
+
+    } catch (error) {
+        res.send(error, "some error occured during retieving the checkOut")
+    }
 }

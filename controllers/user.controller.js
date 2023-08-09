@@ -70,7 +70,12 @@ exports.login = async (req, res, next) => {
     if (PF) {
 
         try {
-            data = await User.findOne({ where: { PF: { [Op.eq]: PF } } }) // the rough sql equivalent for this command is  [ SELECT * FROM users WHERE PF = 'value';]
+          data = await User.findOne({ where: { PF: { [Op.eq]: PF } } }) // the rough sql equivalent for this command is  [ SELECT * FROM users WHERE PF = 'value';]
+            
+          
+          console.log(data.PF, data.id); /// You can actually access the properties of the returned data directly
+
+
             if (data) {
                 // Generate a token
                 const token = jwt.sign({ userId: data.id }, jsontoken.secretKey, { expiresIn: '3h' });

@@ -72,7 +72,7 @@ exports.checkClockIn = async (req, res, next) => {
         data = await CheckIn.findOne({ where: { userID: userID, dateToday: dateToday } })
 
         if (data) {
-            res.send(true);
+            res.send(data);
         } else {
             res.send(false);
         }
@@ -93,7 +93,7 @@ exports.checkClockOut = async (req, res, next) => {
         data = await CheckOut.findOne({ where: { userID: userID, dateToday: dateToday } })
 
         if (data) {
-            res.send(true);
+            res.send(data);
         } else {
             res.send(false);
         }

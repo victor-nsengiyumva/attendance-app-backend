@@ -26,6 +26,8 @@ db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.users = require("./user.model.js")(sequelize, Sequelize);
 db.checkIn = require("./checkIn.model.js")(sequelize, Sequelize);
 db.checkOut = require("./checkOut.model.js")(sequelize, Sequelize)
+db.location = require("./location.model.js")(sequelize, Sequelize)
 
+db.users.belongsTo(db.location,{foreignKey: 'locationID', targetKey: 'id'})
 
 module.exports = db;

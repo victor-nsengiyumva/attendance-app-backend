@@ -1,4 +1,8 @@
 
+db = require("../models/index")
+const LocationModel = db.location;
+
+
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("users", {
         PF: {
@@ -10,13 +14,11 @@ module.exports = (sequelize, Sequelize) => {
         mobile_number: {
             type: Sequelize.STRING
         },
-        location: {
-            type: Sequelize.STRING
-        },
         deviceID:{
             type: Sequelize.STRING
         }
 
     });
+
     return User;
 }

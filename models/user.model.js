@@ -1,7 +1,4 @@
 
-db = require("../models/index")
-const LocationModel = db.location;
-
 
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("users", {

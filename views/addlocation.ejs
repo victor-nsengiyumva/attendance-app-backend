@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles/style.css" rel="stylesheet" type="text/css">
+    <title>Add location</title>
+</head>
+
+<body>
+    <div class="locationForm">
+        <main>
+            <form action="/location/createLocation" method="POST">
+                <label for="name">Name:</label><br>
+                <input type="text" name="name"><br>
+                <label for="name">Longitude:</label><br>
+                <input type="text" name="Longitude"><br>
+                <label for="name">Latitude:</label><br>
+                <input type="text" name="Latitude"><br>
+                <p><button type="submit"> Create location</button></p>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

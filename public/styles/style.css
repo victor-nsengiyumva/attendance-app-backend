@@ -1,0 +1,11 @@
+
+/* these cofiguration of the body class center everything in the center of the parent
+both vertically and horizontally in this case all the contents of the body are centered*/
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure full viewport height */
+    margin: 0; /* Remove default margin */
+}

@@ -103,3 +103,22 @@ exports.checkClockOut = async (req, res, next) => {
         res.send(error, "some error occured during retieving the checkOut")
     }
 }
+
+
+exports.userCheckins = async (res, req, next) => {
+
+    var userID = req.body.userID;
+
+    data = await CheckIn.findAll({ where: { userID: userID } });
+
+    res.send(data);
+
+}
+
+exports.userCheckouts = async (res, req, next) => {
+    var userID = req.body.userID;
+
+    data = await CheckOut.findAll({ where: { userID: userID } });
+
+    res.send(data);
+}

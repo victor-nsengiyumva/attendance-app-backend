@@ -15,6 +15,8 @@ router.post("/register/absent", attendance.registerAbsent);
 
 router.post("/checkClockIn", attendance.checkClockIn);
 
+router.post("/checkClockOut", attendance.checkClockOut);
+
 router.post("/userCheckins", attendance.userCheckins);
 
 router.post("/userCheckouts", attendance.userCheckouts);

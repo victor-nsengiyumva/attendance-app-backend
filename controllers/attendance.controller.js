@@ -105,9 +105,10 @@ exports.checkClockOut = async (req, res, next) => {
 }
 
 
-exports.userCheckins = async (res, req, next) => {
+exports.userCheckins = async (req, res, next) => {
 
-    var userID = req.body.userID;
+    const userID = req.body.userID;
+
 
     data = await CheckIn.findAll({ where: { userID: userID } });
 
@@ -115,8 +116,8 @@ exports.userCheckins = async (res, req, next) => {
 
 }
 
-exports.userCheckouts = async (res, req, next) => {
-    var userID = req.body.userID;
+exports.userCheckouts = async (req, res, next) => {
+    const userID = req.body.userID;
 
     data = await CheckOut.findAll({ where: { userID: userID } });
 

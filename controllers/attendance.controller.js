@@ -117,6 +117,7 @@ exports.userCheckins = async (req, res, next) => {
 }
 
 exports.userCheckouts = async (req, res, next) => {
+     
     const userID = req.body.userID;
 
     data = await CheckOut.findAll({ where: { userID: userID } });

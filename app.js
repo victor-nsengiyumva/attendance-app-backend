@@ -16,7 +16,7 @@ app.use(express.static('public'));
 // syncing the database
 const db = require("./models/index");
 console.log(db.sequelize);
-db.sequelize.sync({force:true})
+db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");
   })

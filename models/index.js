@@ -5,7 +5,6 @@ const sequelize = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER
   host: process.env.MYSQLHOST
   ,
   dialect: "mysql",
-  operatorsAliases: false,
 
   pool: {
     max: 5,

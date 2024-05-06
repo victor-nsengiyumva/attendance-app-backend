@@ -1,18 +1,17 @@
-const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD,{
-  host: process.env.MYSQLHOST,
-  port: process.env.MYSQLPORT,
-  dialect: "mysql",
-
-  pool: {
-    max: 5,
-    min: 0,
-    acquire:30000,
-    idle:10000
-  }
-});
+const sequelize = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD,
+  {
+      host: process.env.MYSQLHOST,
+      port: process.env.MYSQLPORT,
+      dialect: "mysql",
+      pool: {
+          max: 5,
+          min: 0,
+          acquire: 30000,
+          idle: 10000
+      }
+  })
 
 
 /// this is a module created to bundle all the models { ie. the user,tutorial,sequelise,Sequelise,checkIn etc } in this one 

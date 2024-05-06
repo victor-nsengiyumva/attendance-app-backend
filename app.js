@@ -1,9 +1,8 @@
 const express = require('express');
 const cors = require("cors");
+require('dotenv').config();
 
 const app = express();
-
-
 
 // cors validation
 app.use(cors());
@@ -15,7 +14,6 @@ app.use(express.static('public'));
 
 // syncing the database
 const db = require("./models/index");
-console.log(db.sequelize);
 db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");

@@ -1,4 +1,3 @@
-const { STRING } = require("sequelize")
 
 module.exports = (sequelize,Sequelise) => {
     const Location = sequelize.define("location",{

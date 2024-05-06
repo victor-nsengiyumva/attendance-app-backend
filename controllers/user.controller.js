@@ -126,13 +126,10 @@ exports.login = async (req, res, next) => {
 
 exports.logout = async (req, res, next) => {
 
-
     res.send("successful logout")
 };
 
 exports.checksession = async (req, res, next) => {
-
-
     res.send(`yeah the verification has worked ${req.userId}`);
 };
 

@@ -2,7 +2,7 @@
 
 [![BadgeNodeJS](https://img.shields.io/badge/MADE%20WITH-NODEJS-brightgreen?style=for-the-badge&logo=Node.js)](https://shields.io/) [![BadgeExpress](https://img.shields.io/badge/USES-EXPRESS-red?style=for-the-badge)](https://shields.io/) [![BadgeMySQL](https://img.shields.io/badge/USES-MYSQL-4479A1?style=for-the-badge&logo=MySQL)](https://shields.io/) ![Static Badge](https://img.shields.io/badge/Deployed%20On-%20RailWay%20-indigo?style=for-the-badge)
 
-### This is the backend to the MindBridge Flutter mobile app available here [Attandance app]([https://github.com/victor-nsengiyumva/mindbridge-app-project](https://github.com/victor-nsengiyumva/attendance-app-flutter))
+### This is the backend to the Attendance Flutter mobile app available here [Attandance app](https://github.com/victor-nsengiyumva/attendance-app-flutter)
 
 ### :wrench: Core Dependencies
 
